@@ -1,4 +1,5 @@
 #!/usr/bin/python
+#python crackjwt.py eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.xx.xx rockyou.txt
 
 from jwt import decode, InvalidTokenError, DecodeError
 import sys
