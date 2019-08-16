@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+  <head>
+    <title>Cross-Site WebSocket Hijacking Tester</title>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <div class="page-header">
+        <h1>Cross-Site WebSocket Hijacking Tester</h1>
+        Built by
+        <a href="https://twitter.com/lavakumark">@lavakumark</a>
+        , hosted in cow.cat</div>
+      <form class="form-horizontal" role="form" id="connect_form">
+        <div class="form-group">
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="url_tb" placeholder="Enter the ws:// or wss:// URL of the app to test">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-success" id="connect_btn">Connect</button>
+      </form>
+      <div id="error_div" class="col-sm-10"></div>
+      <div id="send_msg_div" class="col-sm-10"></div>
+      <div id="msgs" class="col-sm-10"></div>
+      <div id="btm_links" class="col-sm-10">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">More on WebSocket Testing</h3>
+          </div>
+          <div class="panel-body">
+            <ul class="list-unstyled">
+              <li>
+                <a href="http://blog.ironwasp.org/2014/11/analysing-testing-and-fuzzing-websocket.html">Information on analysing, testing and fuzzing WebSockets</a>
+              </li>
+              <li>
+                <a href="https://www.notsosecure.com/blog/2014/11/27/how-cross-site-websocket-hijacking-could-lead-to-full-session-compromise/">Post explaining impact of Cross-Site WebSocket Testing</a>
+              </li>
+              <li>
+                <a href="http://www.christian-schneider.net/CrossSiteWebSocketHijacking.html">First post on Cross-Site WebSocket Hijacking</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <style>#send_form
+      {
+        margin-top: 20px;
+      }
+      .mts
+      {
+        padding-left: 20px;
+      }
+      .mtb
+      {
+      }
+      #msgs
+      {
+        margin-top: 10px;
+      }
+      #send_msg_div
+      {
+      }
+      #error_div
+      {
+        margin-top: 10px;
+      }
+      #btm_links
+      {
+        margin-top: 50px;
+      }</style>
+    <script>$("#connect_btn").click(function(e){create_ws($("#url_tb").val());});
+      $("#connect_form").click(function(e){return false;});
+      var form_html = '<form class="form-horizontal" role="form" id="send_form"><div class="form-group">' +
+      '<textarea class="form-control" rows="3" id="msg_ta" placeholder="Enter the message you want to send to server and click the \'Send Message\' button.'+
+      '\r\nIf the Server\'s response is same as the one observed for a valid session' +
+      '\r\nand if only Cookies are used for authorization then the target is vulnerable."></textarea></div>'+
+      '<button type="submit" class="btn btn-default" id="send_btn">Send Message</button></form>';
+      function create_ws(url) {
+        if ($("#connect_btn").text() === "Connect")
+        {
+          try
+          {
+            clear_error();
+            ws = new WebSocket(url);
+            ws.onopen = function(e){
+              $("#connect_btn").text("Disconnect");
+              $("#connect_btn").removeClass("btn btn-success");
+              $("#connect_btn").addClass("btn btn-danger");
+            }
+            ws.onclose = function(e){
+              $("#connect_btn").text("Connect");
+              $("#connect_btn").removeClass("btn btn-danger");
+              $("#connect_btn").addClass("btn btn-success");
+              toggle_send_msg(false);
+            }
+            ws.onerror = function(e){
+              if (e.data == undefined)
+              {
+                show_error("Some error in creating or maintaining the connection");
+              }
+              else
+              {
+                show_error(e.data);
+              }
+            }
+            ws.onmessage = function(e){
+              $("#msgs").prepend($('<div class="mts"></div>').append($('<div class="alert alert-warning" role="alert"></div>').text(e.data)));
+            }
+            toggle_send_msg(true);
+            $("#msgs").html("");
+          }
+          catch(err)
+          {
+            show_error(err.message);
+          }
+        }
+        else
+        {
+          ws.close();
+          toggle_send_msg(false);
+        }
+      }
+      function show_error(err) {
+        $("#error_div").prepend($('<div class="alert alert-danger alert-dismissible" role="alert"></div>')
+        .append($('<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>'))
+        .append('<strong>Error: </strong>')
+        .append($('<span></span>').text(err)));
+      }
+      function send_msg(msg) {
+        $("#msgs").prepend($('<div class="mtb"></div>').append($('<div class="alert alert-info" role="alert"></div>').text(msg)));
+        ws.send(msg);
+      }
+      function clear_error() {
+        $("#error_div").html("");
+      }
+      function toggle_send_msg(show) {
+        if (show)
+        {
+          $("#send_msg_div").html(form_html);
+          $("#send_btn").click(function(e){send_msg($("#msg_ta").val());});
+          $("#send_form").click(function(e){return false;});
+        }
+        else
+        {
+          $("#send_msg_div").html("");
+        }
+      }</script>
+  </body>
+</html>
