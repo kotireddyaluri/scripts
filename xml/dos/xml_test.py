@@ -5,7 +5,7 @@ import xml.etree.ElementTree as ET
 tree = ET.parse('country_data.xml')
 root = tree.getroot()
 
-#xmlbomb with formstring()
+#xmlbomb with fromstring()
 data = '''<?xml version="1.0"?>
 <!DOCTYPE lolz [
  <!ENTITY lol "lol">
