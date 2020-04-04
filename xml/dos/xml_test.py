@@ -1,6 +1,10 @@
 #XML BillionLaughAttack
 import xml.etree.ElementTree as ET
-#from defusedxml.ElementTree import parse #fix
+
+#fix
+#from defusedxml.ElementTree import parse
+#https://pypi.org/project/defusedxml/
+
 #xml bomb with parse
 tree = ET.parse('country_data.xml')
 root = tree.getroot()
