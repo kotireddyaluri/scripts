@@ -16,7 +16,7 @@ function loadDoc() {
       document.getElementById("demo").innerHTML = this.responseText;
     }
   };
-  xhttp.open("GET", "http://api.ca.com:8080/CORSTest2/cors/apikey", true);
+  xhttp.open("GET", "http://<target>/CORSTest2/cors/apikey", true);
    xhttp.withCredentials = true;
   xhttp.send();
 }
