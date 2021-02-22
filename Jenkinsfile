@@ -1,5 +1,10 @@
 pipeline {
-  agent any
+  agent {
+    node {
+      label 'pentest-js1'
+    }
+
+  }
   stages {
     stage('Build') {
       steps {
