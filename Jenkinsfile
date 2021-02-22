@@ -1,7 +1,7 @@
 pipeline {
   agent {
     node {
-      label 'pentest-js1'
+      label 'NEW_linux'
     }
 
   }
