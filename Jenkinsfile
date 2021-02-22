@@ -4,6 +4,9 @@ pipeline {
     stage('Build') {
       steps {
         echo 'Building-multi1..'
+        sh '''echo "run date"
+date
+'''
       }
     }
 
