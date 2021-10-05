@@ -1,0 +1,9 @@
+# Android root - Redmi 8
+//keep the Magisk ZIP file in the phone internal storage (downloads/somewhere)
+//keep the the device in fastboot mode(volume down + power)
+1. download the orange-fox recovery - https://orangefox.download/device/olive (zip) - unzip into it, you will find recovery.img
+2. fastboot flash recovery recovery.img
+3. then get into recovery mode (volume up + power)
+4. select the magisk zip then click to install
+5. reboot the system
+6. You will get root on the device
