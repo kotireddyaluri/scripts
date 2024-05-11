@@ -1,6 +1,6 @@
 
-top 25 places to visit in Bali
- - https://www.youtube.com/watch?v=KhiQjxJ-PqM
+
+ - top 25 places to visit in Bali - https://www.youtube.com/watch?v=KhiQjxJ-PqM
  - https://www.youtube.com/shorts/yjdaNP9sapc
 ### Beaches
 - 1 Diamond Beach -  Nusa Penida
