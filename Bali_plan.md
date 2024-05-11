@@ -33,22 +33,22 @@
 - 25 Mount Batur - (40 km from Ubud)
 
 
-Nusa Penida(Beaches and water sports)
+### Nusa Penida(Beaches and water sports)
 - Diamond Beach
 - Kelingking Beach
 - Broken Beach
 - Crystal Bay
 - 
 
-Ubud
- - water falls
- - Temples
+### Ubud
+- water falls
+- Temples
 
-Kuta
- - GWK Park
- - Suluban Beach
- - Pasut Beach
- - Uluwatu Temple
+### Kuta
+- GWK Park
+- Suluban Beach
+- Pasut Beach
+- Uluwatu Temple
 
 
 
