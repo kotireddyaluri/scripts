@@ -2,9 +2,9 @@
 top 25 places to visit in Bali
 https://www.youtube.com/watch?v=KhiQjxJ-PqM
 ### Beaches
-- 1 Diamond Beach - Pejukutan, Nusa Penida, Klungkung Regency, Bali 80771, Indonesia
-- 2 Kelingking Beach - Bunga Mekar, Nusa Penida, Klungkung Regency, Bali 80771, Indonesia
-- 3 Broken Beach - 7F82+R4, Sakti, Nusa Penida, Klungkung Regency, Bali 80771, Indonesia
+- 1 Diamond Beach -  Nusa Penida
+- 2 Kelingking Beach -  Nusa Penida
+- 3 Broken Beach -  Nusa Penida
 - 4 Crystal Bay - Nusa Penida
 - 5 Suluban Beach - Uluwatu (25km from kuta towards temple)
 - 6 Pasut Beach -  25km from kuta other side
